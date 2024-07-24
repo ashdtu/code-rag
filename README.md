@@ -7,6 +7,7 @@ An RAG app to interact with your codebase in natural language queries in real-ti
 
 ### Example Output
 <img src="images/output-system.png" alt="System outputs" width="640">
+
 ## Installation
 
 To install the project, please follow the steps below:
