@@ -4,6 +4,7 @@ from llama_index.core.storage.docstore import BaseDocumentStore
 from llama_index.core.schema import NodeWithScore
 from typing import List, Optional
 from llama_index.core import QueryBundle
+import os
 
 EXCLUDE_DIRS = ['__pycache__', '.venv', '.git', '.idea', 'venv', 'env', 'node_modules', 'dist', 'build', '.vscode',
                 '.github', '.gitlab']
@@ -78,7 +79,9 @@ file_extension_mapping = {
     ".ts": ProgrammingLanguages.TS.value
 }
 
-EXCLUDE_FILES = ['requirements.txt', 'package.json', 'package-lock.json', 'yarn.lock', '__init__.py', 'Dockerfile']
+# Addd more for specific languages
+EXCLUDE_FILES = ['requirements.txt', 'package.json', 'package-lock.json', 'yarn.lock', '__init__.py', 'Dockerfile',
+'.flake8', '.gitignore', '.pre-commit-config.yaml', 'pyproject.toml', 'setup.cfg', 'setup.py', 'tox.ini', 'Jenkinsfile',]
 
 
 class CustomNodePostProcessor(BaseNodePostprocessor):
@@ -96,3 +99,11 @@ class CustomNodePostProcessor(BaseNodePostprocessor):
                     pass
             augmented_nodes.append(n)
         return augmented_nodes
+
+
+def get_readme(repo_path: str):
+    try:
+        with open(os.path.join(repo_path, "README.md"), "r") as f:
+            return f.read()
+    except:
+        return None

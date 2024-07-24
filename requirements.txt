@@ -27,7 +27,6 @@ chromadb==0.5.5
 click==8.1.7
 coloredlogs==15.0.1
 dataclasses-json==0.6.7
-deeplake==3.9.14
 Deprecated==1.2.14
 dill==0.3.8
 dirtyjson==1.0.8
